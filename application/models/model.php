@@ -15,19 +15,72 @@ public function chk_login($username,$userpass) {
         else{       
         return false;
           }
-          
 }
-public function chk_student($user,$pass) {  
+
+public function insert_registercpn($cpn_name,$cpn_address,$cpn_email,$cpn_phnumber) {  
         // $pass = base64_encode(trim($pass));
-        $sql ="SELECT * FROM student WHERE std_code='$user' and tel='$pass'";
+        $sql ="INSERT INTO `company` (`cpn_name`,`cpn_address`,`cpn_email`,`cpn_phnumber`) 
+        VALUES ('$cpn_name','$cpn_address','$cpn_email','$cpn_phnumber')";
       $query = $this->db->query($sql);
-      if($query->num_rows()!=0) {
-        $result = $query->result_array();
-          return $result[0];  
+      if($query) {
+          return $this->db->insert_id(); 
+          }else{ 
+          return false;
           }
-        else{       
-        return false;
-          }
+      
+}
+
+public function insert_registertch($tch_name,$tch_tel,$tch_code) {  
+  // $pass = base64_encode(trim($pass));
+  $sql ="INSERT INTO `teacher` (`tch_name`,`tch_tel`,`tch_code`) 
+  VALUES ('$tch_name','$tch_tel','$tch_code')";
+$query = $this->db->query($sql);
+if($query) {
+    return $this->db->insert_id(); 
+    }else{ 
+    return false;
+    }
+
+}
+
+
+public function insert_user($user_name,$user_pass,$user_group,$id){ 
+  // $pass = base64_encode(trim($pass));
+  $sql ="INSERT INTO `user`(`user_name`,`user_pass`,`user_group`,`status`,id) 
+  VALUES ('$user_name','$user_pass','$user_group','1','$id')";
+$query = $this->db->query($sql);
+if($query) {
+    return true;  
+    }else{ 
+    return false;
+    }
+
+}
+
+public function get_cpn($cpn_id) {  
+  // $pass = base64_encode(trim($pass));
+  $sql ="SELECT * FROM company WHERE cpn_id='$cpn_id'"; 
+$query = $this->db->query($sql);
+$result = $query->result_array();
+if($query) {
+    return $result;  
+    }else{ 
+    return false;
+    }
+
+}
+
+public function get_tch($tch_id) {  
+  // $pass = base64_encode(trim($pass));
+  $sql ="SELECT * FROM teacher WHERE tch_id='$tch_id'"; 
+$query = $this->db->query($sql);
+$result = $query->result_array();
+if($query) {
+    return $result;  
+    }else{ 
+    return false;
+    }
+
 }
 
 public function block_for_teacher() {  

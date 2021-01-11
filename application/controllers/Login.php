@@ -29,7 +29,7 @@ class Login extends CI_Controller {
 		
 		if($data==true) {
             $arrData = array('status'=> $data['status'],'user_pass'=> $data['user_pass'],'user_name'=> $data['user_name'],
-             'user_group'=> $data['user_group']);	
+             'user_group'=> $data['user_group'],'id'=> $data['id']);	
              $this->session->set_userdata($arrData);
              $username = $this->session->userdata('username');
 
@@ -43,9 +43,11 @@ class Login extends CI_Controller {
                 redirect('login');  
              } else{
 				 if($data['user_group'] == "teacher"){
-					redirect('teacher');
+					$data = $this->model->get_tch($data['id']);
+					 print_r($data);
 				 }else if($data['user_group'] == "company"){
-					 echo "you are company";
+					 $data = $this->model->get_cpn($data['id']);
+					 print_r($data);
 				 }else if($data['user_group'] == "student"){
 					echo "you are student";
 				}else if($data['user_group'] == "bilateral"){

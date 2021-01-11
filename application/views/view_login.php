@@ -54,13 +54,19 @@
 															<input type="checkbox" class="ace" />
 															<span class="lbl"> Remember Me</span>
 														</label> -->
-
 														<button type="submit" class="width-35 pull-right btn btn-sm btn-primary">
 															<i class="ace-icon fa fa-key"></i>
 															<span class="bigger-110">Login</span>
 														</button>
 
-														<input type="hidden" name="action" value="<?php echo base64_encode('login');?>"  />
+														<div>
+															<u><a href="company">Register Company</a></u>
+														</div>
+														<div>
+															<u><a href="teacher">Register Teacher</a></u>
+														</div>
+
+														<input type="hidden" name="action" value="<?php echo base64_encode('login');?>"/>
 													</div>
 
 													<div class="space-4"></div>
