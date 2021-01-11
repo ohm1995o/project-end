@@ -43,6 +43,18 @@ if($query) {
 
 }
 
+public function insert_registerstd($std_name,$std_address,$std_birthday,$std_age,$std_sex) {  
+  // $pass = base64_encode(trim($pass));
+  $sql ="INSERT INTO `student` (`std_name`,`std_address`,`std_birthday`,`std_age`,`std_sex`) 
+  VALUES (`$std_name`,`$std_address`,`$std_birthday`,`$std_age`,`$std_sex`)";
+$query = $this->db->query($sql);
+if($query) {
+    return $this->db->insert_id(); 
+    }else{ 
+    return false;
+    }
+
+}
 
 public function insert_user($user_name,$user_pass,$user_group,$id){ 
   // $pass = base64_encode(trim($pass));

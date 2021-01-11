@@ -65,6 +65,9 @@
 														<div>
 															<u><a href="teacher">Register Teacher</a></u>
 														</div>
+														<div>
+															<u><a href="student">Register Student</a></u>
+														</div>
 
 														<input type="hidden" name="action" value="<?php echo base64_encode('login');?>"/>
 													</div>
